@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> Upload - Beforg modul </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2" /> 
+
+<script type="text/javascript">
+xmlhttp=new XMLHttpRequest();
+
+function newdircheck () {
+	if (document.getElementById("newDirName").value == "") {
+		document.getElementById("status").innerHTML = "NINCS MEGADVA KÖNYVTÁRNÉV!";
+		return false;
+	}
+	if (document.getElementById("eurRate").value == "") {
+		document.getElementById("status").innerHTML = "HIÁNYZÓ EUR ÁRFOLYAM";
+		return false;
+	}
+	document.getElementById("status").innerHTML = "Türelem...";
+	xmlhttp.open("GET","makedir.php?dirname=" + document.getElementById("newDirName").value + "&eurrate=" + document.getElementById("eurRate").value,false);
+	xmlhttp.send();
+	switch (xmlhttp.responseText)
+	{
+	case "0":
+		document.getElementById("status").innerHTML = "NEM SIKERÜLT A KÖNYVTÁRAT LÉTREHOZNI!";
+		document.getElementById("projectDir").value = "";
+		break;
+	case "-1":
+		document.getElementById("status").innerHTML = "NEM NUMERIKUS AZ ÁRFOLYAM!";
+		document.getElementById("projectDir").value = "";
+		break;
+	case "-2":
+		document.getElementById("status").innerHTML = "NEM SIKERÜLT BEÍRNI AZ ÁRFOLYAMOT!";
+		document.getElementById("projectDir").value = "";
+		break;
+	case "1":
+		document.getElementById("status").innerHTML = "Sikeres könyvtárlétrehozás!";
+		document.getElementById("projectDir").value = document.getElementById("newDirName").value;
+		break;
+	}
+
+	return false;
+}
+
+function validateForm () {
+	if (document.getElementById("projectDir").value=="")
+	{
+		alert ("NEM SIKERÜLT A KÖNYVTÁR LÉTREHOZÁS!");
+		return false;
+	}else{
+		return true;
+	}
+}
+
+function addRowToTable( shopName )
+{
+  var tbl = document.getElementById(shopName + "Files");
+  var lastRow = tbl.rows.length;
+  // if there's no header row in the table, then iteration = lastRow + 1
+  var iteration = lastRow;
+  var row = tbl.insertRow(lastRow);
+  
+  
+  var cellRight = row.insertCell(0);
+  var textNode = document.createTextNode("Send this file: ");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'file';
+  el.name = 'userFile_' + shopName + "[" + iteration + "]";
+  
+  cellRight.appendChild(el);
+  
+}
+
+</script>
+ </head>
+
+
+
+
+<body>
+<table border="0">
+ <tr >
+	<td colspan="2">
+		<form enctype="multipart/form-data" action="logic.php"_ method="POST" id="newDir" onsubmit="return newdircheck();">
+		<table border="1">
+		 <tr>
+			<td style="background: #aaaaaa">Az új projekt mappája:</td>
+			<td style="background: #aaaaaa"><input type="text" id="newDirName"></td>
+			<td style="background: #aaaaaa">EUR árfolyam:</td>
+			<td style="background: #aaaaaa"><input type="text" id="eurRate"></td>
+			<td style="background: #aaaaaa"><input type="submit" value="Létrehoz" /></td>
+		 </tr>
+	   </table>
+			
+			
+		</form>
+		<div id="status"></div><br /><br />
+	</td>
+ </tr>
+ <tr>
+	<td style="vertical-align:top;">
+		<form enctype="multipart/form-data" action="logic.php" method="POST" onsubmit="return validateForm ();">
+	    <input type="hidden" name="MAX_FILE_SIZE" value="300000000" />
+		<table border="1">
+		 <tr>
+			<td style="background: #aaaaaa">SORTEX</td>
+			<td> </td>
+		 </tr>
+		 <tr>
+			<td style="background: #aaaaaa">
+				<table>
+					<tr><td>Send this file: <input name="sortex" type="file" /></td></tr>
+				</table>
+			</td>
+		 </tr>
+		 {shoprows}
+		</table>
+		<br />
+    <input type="submit" value="Send Files" />
+	</td>
+	<td align="right" valign="top">
+		<div style="text-align: left; border:1px solid black; margin: 0px; overflow: auto;">{projectrows}</div>
+	</td>
+ </tr>
+</table>
+	<input type="hidden" id="projectDir" name="projectDir" value="">
+	<input type="hidden" id="eurRate" name="eurRate" value="">
+</form>
+<a href="logout.php">logout</a>
+
+ </body>
+</html>

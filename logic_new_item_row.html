@@ -1,0 +1,18 @@
+			<tr>
+				<td style="background: #dddddd;"><a href="javascript:setHelpVis('helprow{shopdata.3}');">{shopdata.3}</a><input type="hidden" name="newItemRowId[]" value="{shopdata.3}"></td>
+				<td style="background: #dddddd;" ><a href="http://www.butlers.de/shop/index.php?page=search&page_action=query&desc=on&sdesc=on&keywords={shopdata.3}&x=4&y=7" target="_blank">{shopdata.6}</a></td>
+				<td style="background: #dddddd;" ><a href="http://www.butlers.de/shop/index.php?page=search&page_action=query&desc=on&sdesc=on&keywords={shopdata.searchstring}&x=4&y=7" target="_blank">{shopdata.7}</a></td>
+				<td ><input type="text" id="groupname[{shopdata.3}]" name="groupname[{shopdata.3}]" value="{shopdata.h_groupname}" size="12" tabIndex="{shopdata.tab1}"></td>
+				<td ><nobr><input type="text" id="longname[{shopdata.3}]" name="longname[{shopdata.3}]" value="{shopdata.h_name}" size="20" onChange="calc_length('longname[{shopdata.3}]', 'longnamecount[{shopdata.3}]');" onBlur="copyLongName({shopdata.3});" tabIndex="{shopdata.tab2}">(<span id="longnamecount[{shopdata.3}]" >0</span>)</nobr></td>
+				<td ><nobr><input type="text" id="shortname[{shopdata.3}]" name="shortname[{shopdata.3}]" value="{shopdata.h_shortname}" size="20" onChange="calc_length('shortname[{shopdata.3}]', 'shortnamecount[{shopdata.3}]');" tabIndex="{shopdata.tab3}">(<span id="shortnamecount[{shopdata.3}]">0</span>)</nobr></td>
+<!--				<td ><nobr><input type="text" id="butorgroup[{shopdata.3}]" name="butorgroup[{shopdata.3}]" value="" size="2"  tabIndex="{shopdata.tab4}"></nobr></td>-->
+				<td style="background: #dddddd;" ><nobr>{shopdata.11}&euro;</nobr></td>
+				<td style="background: #dddddd;" ><nobr>{shopdata.12}&euro;</nobr></td>
+				<td ><nobr><input type="text" id="beszar[{shopdata.3}]" name="beszar[{shopdata.3}]" value="{shopdata.h_purchase_price}" size="3" readonly="readonly">Ft</nobr></td>
+				<td style="background: #dddddd;" ><nobr>{shopdata.h_sale_price_readonly} Ft</nobr></td>
+				<td ><nobr><input type="text" id="fogyar[{shopdata.3}]" name="fogyar[{shopdata.3}]" value="{shopdata.h_sale_price}" size="4" onChange="calc_margin({shopdata.3});calc_cogs({shopdata.3});" tabIndex="{shopdata.tab5}">Ft</nobr></td>
+				<td style="background: #999999;" ><nobr><input type="text" id="cogs[{shopdata.3}]" name="cogs[{shopdata.3}]" value="{shopdata.cogs}" size="2" readonly="readonly">%</nobr></td>
+				<td style="background: #dddddd;" ><nobr><input type="text" id="margin[{shopdata.3}]" name="margin[{shopdata.3}]" value="{shopdata.margin}" size="2" readonly="readonly">%</nobr></td>
+				<td ><input type="text" id="afa[{shopdata.3}]" name="afa[{shopdata.3}]" value="{shopdata.afa}" size="1"></td>
+				<td STYLE="font-size: 10px;">{shopdata.shops}</td>
+			</tr>

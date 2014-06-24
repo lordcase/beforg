@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> Logic - Beforg modul </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2" /> 
+
+<script>
+
+function calc_length (id1, id2) {
+	if (document.getElementById(id1)) {
+		document.getElementById(id2).innerHTML = document.getElementById(id1).value.length;
+	}
+}
+
+function calc_margin (id) {
+	nettoFogyar = document.getElementById("fogyar[" + id + "]").value / 1.27;
+	superbruttoBeszar = document.getElementById("beszar[" + id + "]").value * 1.2;
+	document.getElementById("margin[" + id + "]").value = (Math.round((nettoFogyar - superbruttoBeszar) / nettoFogyar * 10000))/100;
+}
+
+function calc_cogs (id) {
+	nettoFogyar = document.getElementById("fogyar[" + id + "]").value / 1.27;
+	document.getElementById("cogs[" + id + "]").value = (Math.round(document.getElementById("beszar[" + id + "]").value / nettoFogyar * 10000))/100;
+}
+
+function calcAllLengths () {
+	idArray = document.getElementsByName("newItemRowId[]");
+	for (id in idArray) {
+		rowId = idArray[id].value;
+		calc_length("shortname[" + rowId + "]",  "shortnamecount[" + rowId + "]");
+		calc_length("longname[" + rowId + "]",  "longnamecount[" + rowId + "]");
+	}
+}
+ 
+function setHelpVis (helpRowName) {
+	if (document.getElementsByName(helpRowName)) {
+		arrrr = document.getElementsByName(helpRowName);
+		for (x in arrrr) {
+			if (x != "length" && x != "item") {
+				if (arrrr[x].style.display == "none") {
+					arrrr[x].style.display = "inline";
+				}else{
+					arrrr[x].style.display = "none";
+				}
+			}
+		}
+	}
+}
+
+function copyContent (rowId, value, targetField) {
+	if (targetField != "all") {
+		document.getElementById(targetField + "[" + rowId + "]").value = value;
+		if (targetField == "shortname" || targetField == "longname") {
+			calc_length(targetField + "[" + rowId + "]",  targetField + "count[" + rowId + "]");
+		}
+		if (targetField == "fogyar") {
+			calc_margin(rowId);
+			calc_cogs(rowId);
+		}
+	}else{
+		document.getElementById("groupname[" + rowId + "]").value = value;
+		document.getElementById("shortname[" + rowId + "]").value = value;
+		document.getElementById("longname[" + rowId + "]").value = value;
+		document.getElementById("fogyar[" + rowId + "]").value = value;
+		calc_length("shortname[" + rowId + "]",  "shortname" + "count[" + rowId + "]");
+		calc_length("logname[" + rowId + "]",  "logname" + "count[" + rowId + "]");
+		calc_margin(rowId);
+		calc_cogs(rowId);
+	}
+}
+
+function copyLongName(rowId) {
+	if (document.getElementById("shortname[" + rowId + "]").value == "" ) {
+		document.getElementById("shortname[" + rowId + "]").value = document.getElementById("longname[" + rowId + "]").value.substr(0,23);
+		calc_length("shortname[" + rowId + "]",  "shortname" + "count[" + rowId + "]");
+	}
+
+}
+
+
+
+function checkSubmit () {
+alert(document.getElementById("submitState").value);
+	if (document.getElementById("submitState").value == "true") {
+		return true;
+	}else{
+		return false;
+	}
+}
+
+
+function setSubmit (state) {
+	document.getElementById("submitState").value = state;
+	document.getElementById("dataform").submit();
+	return true;
+}
+
+</script>
+
+ </head>
+
+
+
+
+ <body onLoad="calcAllLengths();">
+<form onSubmit="return checkSubmit();" method="POST" action="download.php" id="dataform">
+<table border="1">
+ <tr >
+	<td style="background: #aaaaaa" colspan="13"><div style="text-align:left;position: inline;float: left;">ÚJ CIKKEK</div><div style="text-align:right; position: inline;float: right">EUR rate: {eurrate} &euro;</div></td>
+ </tr>
+ {newitemrows}
+</table>
+	<input type="hidden" id="submitState" value="false">
+    <input type="button" value="Elküld" onClick="return setSubmit('true');" />
+</form>
+
+
+
+<table border="1">
+ <tr >
+	<td style="background: #aaaaaa" colspan="11">RÉGI CIKKEK</td>
+ </tr>
+ {olditemrows}
+</table>
+<a href="upload.php">upload</a>
+<a href="logout.php">logout</a>
+ </body>
+</html>

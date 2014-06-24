@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> Edit - Beforg modul </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2" /> 
+
+<script type="text/javascript">
+
+function setDel (rowId) {
+	tdArray = document.getElementsByName("td_" + rowId);
+	if (document.getElementById("delRow_" + rowId).value == rowId) {
+		document.getElementById("delRow_" + rowId).value = "";
+		newBgColor = "#ffffff";
+	}else{
+		document.getElementById("delRow_" + rowId).value = rowId;
+		newBgColor = "#cc0000";
+	}
+	for (td in tdArray){
+		if (td != "length" && td != "item") {
+			tdArray[td].style.background = newBgColor;
+		}
+	}
+}
+
+function setNewEur () {
+	newEurRate = document.getElementById("newEur").value;
+	fogyarArr = document.getElementsByName("origpurchaseprice");
+	for (a in fogyarArr) {
+		if (a != "length" && a != "item") {
+			fogyarArr[a].previousSibling.value=Math.round(fogyarArr[a].value*newEurRate);
+		}
+		
+	}
+	
+	return false;
+}
+
+function addRowToTable( shopName )
+{
+  var tbl = document.getElementById("main");
+  var lastRow = tbl.rows.length;
+  // if there's no header row in the table, then iteration = lastRow + 1
+  var iteration = lastRow;
+  var row = tbl.insertRow(lastRow);
+  
+  
+  var cellRight = row.insertCell(0);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(1);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(2);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(3);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(4);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(5);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(6);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(7);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(8);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(9);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(10);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(11);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(12);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(13);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(14);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(15);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(16);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(17);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(18);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(19);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(20);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(21);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(22);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(23);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(24);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(25);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+  var cellRight = row.insertCell(26);
+  var textNode = document.createTextNode("Newrow");
+  cellRight.appendChild(textNode);
+  var el = document.createElement('input');
+  el.type = 'text';
+  el.name = 'itemData[' + iteration + '][]';
+  
+  cellRight.appendChild(el);
+
+  
+return false;
+  
+}
+
+ </script>
+</head>
+
+
+
+
+<body>
+<form enctype="multipart/form-data" action="#" onsubmit="return setNewEur();" method="POST">
+<table border="1">
+<tr><td>File: </td><td>{filename}</td></tr>
+<tr><td>NewEur:<input type="text" size="2" name="newEur" id="newEur"></td><td><input type="submit"></td></tr>
+</table>
+</form>
+<form enctype="multipart/form-data" action="editlist.php" method="POST">
+
+<table border="1" id="main">
+{content}
+</table>
+<input type="hidden" name="fileName" value="{filename}">
+<input type="hidden" name="redoZip" value="true">
+<input type="button" value="Add Row" onClick="return addRowToTable();"/>
+<input type="submit" value="Send File" />
+</form>
+<a href="logout.php">logout</a>
+
+ </body>
+</html>
